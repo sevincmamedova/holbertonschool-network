@@ -10,3 +10,4 @@ The OSI model, types of network, MAC and IP addresses, TCP and UDP, and ports.
 | `1-types_of_network` | LAN, WAN and the Internet |
 | `2-MAC_and_IP_address` | What MAC and IP addresses are |
 | `3-UDP_and_TCP` | The difference between TCP and UDP |
+| `4-TCP_and_UDP_ports` | Displays listening sockets with their owning program |
