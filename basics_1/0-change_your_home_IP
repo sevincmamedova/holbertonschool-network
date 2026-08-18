@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Makes localhost resolve to 127.0.0.2 and facebook.com resolve to 8.8.8.8
+HOSTS_FILE=/etc/hosts
+TEMP_FILE=$(mktemp)
+
+# Keep every entry that maps neither localhost nor facebook.com
+grep -vE '(^|[[:space:]])(localhost|facebook\.com)([[:space:]]|$)' \
+	"$HOSTS_FILE" > "$TEMP_FILE"
+
+# Add the two required entries
+printf '127.0.0.2\tlocalhost\n' >> "$TEMP_FILE"
+printf '8.8.8.8\tfacebook.com\n' >> "$TEMP_FILE"
+
+# Overwrite in place, so the file keeps its owner and permissions
+cat "$TEMP_FILE" > "$HOSTS_FILE"
+rm -f "$TEMP_FILE"
